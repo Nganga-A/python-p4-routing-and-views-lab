@@ -16,17 +16,17 @@ def index():
 
 @app.route('/print/<string:input_string>')
 def print_string(input_string):
-    print (f'Received String: {input_string}')
-    return input_string + '/n'
+    print (input_string)
+    return input_string
 
 @app.route('/count/<int:num>')
 def count(num):
-    numbers = "<br>".join(str(i) for i in range(num+1))
+    numbers = "\n".join(str(i) for i in range(num+1))
     return numbers
 
 
 # Define the math route with three parameters: num1, operation, and num2
-@app.route('/math/<int:num1><operation><int:num2>')
+@app.route('/math/<int:num1>/<operation>/<int:num2>')
 def math(num1, operation, num2):
     result = None
 
@@ -47,4 +47,4 @@ def math(num1, operation, num2):
     else:
         return "Invalid operation. Supported operations are +, -, *, div, and %."
 
-    return f"Result: {num1} {operation} {num2} = {result}"
+    return str(result)
